@@ -1,0 +1,90 @@
+@font-face {
+  font-family: haarlem;
+  src: url("./fonts/Haarlem.ttf");
+}
+
+:root {
+  --first-color: linear-gradient(360deg, #111111 30%, #141414 80%);
+  --sec-color: #b88746;
+  --thrd-color: #fdf5a6;
+  --mixed: linear-gradient(45deg, #b88746, #fdf5a6);
+  color: #ffffff;
+}
+
+html {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+h1 {
+  font-family: haarlem;
+  font-size: 50px;
+  background: var(--mixed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100%;
+  background: repeat;
+  background-attachment: fixed;
+  background: var(--first-color);
+}
+
+.decor,
+img {
+  width: 400px;
+  height: auto;
+  /*align-self: center;*/
+}
+
+.book-window {
+  background-color: transparent;
+  width: 80%;
+  border: 4px solid;
+  border-image-source: var(--mixed);
+  border-image-slice: 1;
+  justify-self: center;
+  min-height: 500px;
+  margin-top: 50px;
+  align-self: center;
+  justify-self: center;
+}
+
+.btn {
+  margin: 15px;
+  width: 200px;
+  height: 50px;
+  align-self: center;
+  justify-self: center;
+  border: 0 solid;
+  box-shadow: inset 0 0 20px rgb(255, 255, 255);
+  outline: 1px solid;
+  outline-color: var(--sec-color);
+  outline-offset: 0px;
+  text-shadow: none;
+  transition: all 700ms cubic-bezier(0.19, 1, 0.22, 1);
+  font-family: haarlem;
+  font-size: 30px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  border: 2px solid var(--sec-color);
+  box-shadow: inset 0 0 20px var(--sec-color), 0 0 20px #ffb554;
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 10px;
+  transition: all 700ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn p {
+  background: var(--mixed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: translateX(17%) translateY(-50%);
+}
