@@ -20,7 +20,12 @@ let newBook;
 function addBookNode() {
   newBook = new bookData(title, author, pages, read);
   booksArray.push(newBook);
+
+  const bookNodes = document.querySelectorAll(".bookNode");
+  bookNodes.forEach((node) => bookContainer.removeChild(node));
+
   for (let i = 0; i < booksArray.length; i++) {
+    console.log(booksArray[i]);
     createBookNode(booksArray[i]);
   }
 }
@@ -79,12 +84,4 @@ addButton.addEventListener("click", () => {
     bookContainer.classList.remove("fadeOut");
     bookContainer.classList.add("fadeIn");
   }
-});
-
-//check TEST ONLY!
-
-const checkBtn = document.querySelector(".check-array");
-
-checkBtn.addEventListener("click", () => {
-  console.log(booksArray);
 });
