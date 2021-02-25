@@ -52,13 +52,46 @@ html {
 
 .form-popUp {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70vw;
+  height: 70vh;
   position: absolute;
   opacity: 0;
   pointer-events: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   transition: opacity 0.5s ease-in;
+  font-size: 30px;
+  color: #c7c7c7;
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70vw;
+  height: 70vh;
+}
+
+input {
+  width: 50%;
+  height: 10%;
+  background: var(--fourth-color);
+  border: 2px solid #c7c7c7;
+  border-radius: 15px;
+  outline: none;
+  color: #c7c7c7;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+input[type="checkbox"] {
+  width: auto;
+  height: auto;
+  transform: scale(2);
+  margin-bottom: 18px;
+  margin-top: 0;
 }
 
 h1 {
@@ -66,10 +99,14 @@ h1 {
   font-size: 50px;
   background: var(--mixed);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  padding-left: auto;
+  padding-right: auto;
 }
 
-.add-btn {
+.add-btn,
+.enter {
   margin: 15px;
   width: 200px;
   height: 50px;
@@ -88,9 +125,11 @@ h1 {
   color: #c7c7c7;
   justify-content: center;
   align-items: center;
+  background: none;
 }
 
-.add-btn:hover {
+.add-btn:hover,
+.enter:hover {
   border: 1px solid var(--sec-color);
   box-shadow: inset 0 0 20px var(--sec-color), 0 0 20px #ffb554;
   border-radius: 50px;
@@ -105,6 +144,32 @@ h1 {
   align-items: center;
 }
 
+.bookContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 70vw;
+  height: 70vh;
+  position: absolute;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in;
+  opacity: 0;
+}
+
+div.bookNode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 150px;
+  height: 200px;
+  font-size: 20px;
+  border: 1px solid #c7c7c7;
+  border-radius: 15px;
+  margin: 20px;
+}
+
 /* Animation classes*/
 div.fadeIn {
   opacity: 1 !important;
@@ -112,6 +177,41 @@ div.fadeIn {
 }
 
 div.fadeOut {
-  opacity: 0;
-  pointer-events: none;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .main-window {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    width: 100vw;
+    height: 100vh;
+    border: none;
+    border-radius: 0px;
+  }
+
+  .bookContainer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-popUp,
+  #form {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  input {
+    width: 80%;
+    height: 50px;
+  }
+
+  h1 {
+    font-size: 35px;
+  }
 }
