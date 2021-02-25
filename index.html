@@ -9,29 +9,26 @@
   </head>
   <body>
     <div class="container">
+      <button class="check-array">check</button>
       <div class="main-window">
         <div class="intro">
           <h1>Your exclusive library</h1>
-          <a href="" class="add-btn">Add a book</a>
+          <a href="" class="enter">Enter</a>
         </div>
         <div class="form-popUp">
-          <form action="">
-            <div>
-              <label for="Title">Title</label> <input type="text" id="Title" />
-            </div>
-            <div>
-              <label for="Author">Author</label>
-              <input type="text" id="Author" />
-            </div>
-            <div>
-              <label for="Pages">Pages</label>
-              <input type="text" id="Pages" />
-            </div>
-            <div>
-              <label for="ReadOrNot">ReadOrNot</label>
-              <input type="text" id="ReadOrNot" />
-            </div>
+          <form action="" name="form" id="form">
+            <input type="text" id="title" name="title" placeholder="Title" />
+            <input type="text" id="author" name="author" placeholder="Author" />
+            <input type="text" id="pages" name="pages" placeholder="Pages" />
+            <p>Did you read the book?</p>
+            <input type="checkbox" id="read" name="read" value="Yes" checked />
+            <button type="submit" form="form" class="add-btn">
+              Add a book
+            </button>
           </form>
+        </div>
+        <div class="bookContainer">
+          <a href="" class="request-form">ADD ANOTHER</a>
         </div>
       </div>
     </div>
