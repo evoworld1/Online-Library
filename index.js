@@ -7,6 +7,7 @@ const requestFormButton = document.querySelector(".request-form");
 
 class bookData {
   constructor(title, author, pages, read) {
+    this.id = ++uniqueId;
     this.title = form.title.value;
     this.author = form.author.value;
     this.pages = form.pages.value;
@@ -15,24 +16,29 @@ class bookData {
 }
 
 let booksArray = [];
+let uniqueId = 0;
 let newBook;
 
-function addBookNode() {
+function addToLibrary() {
   newBook = new bookData(title, author, pages, read);
   booksArray.push(newBook);
+  populateStorage();
+  form.reset();
+  addBookNode();
+}
 
+function addBookNode() {
   const bookNodes = document.querySelectorAll(".bookNode");
   bookNodes.forEach((node) => bookContainer.removeChild(node));
 
   for (let i = 0; i < booksArray.length; i++) {
-    console.log(booksArray[i]);
     createBookNode(booksArray[i]);
   }
 }
 
 function createBookNode(data) {
   const bookDiv = document.createElement("div");
-  bookDiv.setAttribute("id", `bookNode`);
+  bookDiv.setAttribute("id", `bookNode${booksArray.indexOf(data)}`);
   bookDiv.classList.add("bookNode");
   bookContainer.appendChild(bookDiv);
 
@@ -50,15 +56,29 @@ function createBookNode(data) {
   pagesDiv.classList.add("bookPages");
   pagesDiv.textContent = data.pages;
   bookDiv.appendChild(pagesDiv);
+
+  const removeBtn = document.createElement("button");
+  removeBtn.classList.add("removeButton");
+  removeBtn.textContent = "Remove";
+  bookDiv.appendChild(removeBtn);
+
+  removeBtn.addEventListener("click", () => {
+    let bookRemove = document.getElementById(
+      `bookNode${booksArray.indexOf(data)}`
+    );
+    bookContainer.removeChild(bookRemove);
+    booksArray.splice(booksArray.indexOf(data), 1);
+    populateStorage();
+  });
 }
 
-//Events for animations
+//Events for buttons
 enterButton.addEventListener("click", () => {
   event.preventDefault();
   intro.classList.add("fadeOut");
   setTimeout(formAnimation, 500);
   function formAnimation() {
-    formPopUp.classList.add("fadeIn");
+    bookContainer.classList.add("fadeIn");
   }
 });
 
@@ -75,8 +95,7 @@ requestFormButton.addEventListener("click", () => {
 
 addButton.addEventListener("click", () => {
   event.preventDefault();
-  addBookNode();
-  form.reset();
+  addToLibrary();
   formPopUp.classList.remove("fadeIn");
   formPopUp.classList.add("fadeOut");
   setTimeout(formAnimation, 500);
@@ -85,3 +104,21 @@ addButton.addEventListener("click", () => {
     bookContainer.classList.add("fadeIn");
   }
 });
+
+//Storage
+function populateStorage() {
+  localStorage.setItem("booksArray", JSON.stringify(booksArray));
+}
+
+function restoreStorage() {
+  if (!localStorage.booksArray) {
+    addBookNode();
+  } else {
+    let newBooksArray = localStorage.getItem("booksArray");
+    newBooksArray = JSON.parse(newBooksArray);
+    booksArray = newBooksArray;
+    addBookNode();
+  }
+}
+
+restoreStorage();
