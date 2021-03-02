@@ -69,6 +69,7 @@ function createBookNode(data) {
     bookContainer.removeChild(bookRemove);
     booksArray.splice(booksArray.indexOf(data), 1);
     populateStorage();
+    addBookNode();
   });
 }
 
