@@ -106,7 +106,8 @@ h1 {
 }
 
 .add-btn,
-.enter {
+.enter,
+.request-form {
   margin: 15px;
   width: 200px;
   height: 50px;
@@ -129,7 +130,8 @@ h1 {
 }
 
 .add-btn:hover,
-.enter:hover {
+.enter:hover,
+.request-form:hover {
   border: 1px solid var(--sec-color);
   box-shadow: inset 0 0 20px var(--sec-color), 0 0 20px #ffb554;
   border-radius: 50px;
@@ -155,6 +157,15 @@ h1 {
   pointer-events: none;
   transition: opacity 0.5s ease-in;
   opacity: 0;
+  overflow-y: scroll;
+}
+
+.requestButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  margin: auto;
 }
 
 div.bookNode {
@@ -165,11 +176,29 @@ div.bookNode {
   width: 150px;
   height: 200px;
   font-size: 20px;
-  border: 1px solid #c7c7c7;
+  border: 3px solid #ffffff;
   border-radius: 15px;
   margin: 20px;
+  background: var(--mixed);
+  color: #1d1d1d;
 }
 
+div.bookNode:hover {
+  box-shadow: 0 0 20px var(--sec-color);
+}
+
+.removeButton {
+  background: none;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  transition: all 100ms ease-in;
+}
+
+.removeButton:hover {
+  transform: scale(1.2);
+  transition: all 100ms ease-in;
+  border-radius: 15px;
+}
 /* Animation classes*/
 div.fadeIn {
   opacity: 1 !important;
@@ -195,9 +224,15 @@ div.fadeOut {
   }
 
   .bookContainer {
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    overflow-y: scroll;
+  }
+
+  .requestButton {
+    position: fixed;
+    transform: translateY(340px) !important;
   }
 
   .form-popUp,
