@@ -5,22 +5,29 @@ const addButton = document.querySelector(".add-btn");
 const bookContainer = document.querySelector(".bookContainer");
 const requestFormButton = document.querySelector(".request-form");
 
-class bookData {
+/*class bookData {
   constructor(title, author, pages, read) {
-    this.id = ++uniqueId;
     this.title = form.title.value;
     this.author = form.author.value;
     this.pages = form.pages.value;
     this.read = form.read.checked;
   }
-}
+}*/
+const bookData = function (title, author, pages, read) {
+  return {
+    title: form.title.value,
+    author: form.author.value,
+    pages: form.pages.value,
+    read: form.read.value,
+  };
+};
 
 let booksArray = [];
 let uniqueId = 0;
 let newBook;
 
 function addToLibrary() {
-  newBook = new bookData(title, author, pages, read);
+  newBook = bookData(title, author, pages, read);
   booksArray.push(newBook);
   populateStorage();
   form.reset();
