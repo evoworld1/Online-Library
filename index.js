@@ -18,7 +18,7 @@ const bookData = function () {
     title: form.title.value,
     author: form.author.value,
     pages: form.pages.value,
-    read: form.read.value,
+    read: form.read.checked,
   };
 };
 
@@ -26,7 +26,7 @@ let booksArray = [];
 let newBook;
 
 function addToLibrary() {
-  newBook = bookData(title, author, pages, read);
+  newBook = bookData();
   booksArray.push(newBook);
   populateStorage();
   form.reset();
@@ -62,6 +62,23 @@ function createBookNode(data) {
   pagesDiv.classList.add("bookPages");
   pagesDiv.textContent = data.pages;
   bookDiv.appendChild(pagesDiv);
+
+  const readBtn = document.createElement("button");
+  readBtn.classList.add("readBtn");
+  bookDiv.appendChild(readBtn);
+  if (data.read === false) {
+    readBtn.textContent = "Not Read";
+    readBtn.style.backgroundColor = "#e04f63";
+  } else {
+    readBtn.textContent = "Read";
+    readBtn.style.backgroundColor = "#63da63";
+  }
+
+  readBtn.addEventListener("click", () => {
+    data.read = !data.read;
+    populateStorage();
+    addBookNode();
+  });
 
   const removeBtn = document.createElement("button");
   removeBtn.classList.add("removeButton");
