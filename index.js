@@ -5,14 +5,6 @@ const addButton = document.querySelector(".add-btn");
 const bookContainer = document.querySelector(".bookContainer");
 const requestFormButton = document.querySelector(".request-form");
 
-/*class bookData {
-  constructor(title, author, pages, read) {
-    this.title = form.title.value;
-    this.author = form.author.value;
-    this.pages = form.pages.value;
-    this.read = form.read.checked;
-  }
-}*/
 const bookData = function () {
   return {
     title: form.title.value,
