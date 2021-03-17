@@ -13,7 +13,7 @@ const requestFormButton = document.querySelector(".request-form");
     this.read = form.read.checked;
   }
 }*/
-const bookData = function (title, author, pages, read) {
+const bookData = function () {
   return {
     title: form.title.value,
     author: form.author.value,
@@ -23,7 +23,6 @@ const bookData = function (title, author, pages, read) {
 };
 
 let booksArray = [];
-let uniqueId = 0;
 let newBook;
 
 function addToLibrary() {
